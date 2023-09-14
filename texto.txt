@@ -1,0 +1,30 @@
+//FUNCION AÑADIR AL CARRITO
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+console.log(carrito)
+const eventoCards = (nodos, array) => {
+    for (let i = 0; i < nodos.length; i++) {
+        nodos[i].onclick = (e) => {
+            const id = e.currentTarget.id.slice(7);
+            const buscarProducto = array.find(element => element.id === Number(id));
+            carrito.push(buscarProducto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            cardsHtml(carrito, cardsCarrito)
+            Toastify({
+                text: "Se ha añadido a tu carrito",
+                className: "info",
+                style: {
+                    background: "#060016",
+                }
+            }).showToast();
+            console.log(carrito)
+        }
+    }
+}
+
+
+
+
+
+
+
+
